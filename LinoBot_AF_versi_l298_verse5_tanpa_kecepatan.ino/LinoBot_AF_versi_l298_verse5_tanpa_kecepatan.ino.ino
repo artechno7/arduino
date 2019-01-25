@@ -1,14 +1,14 @@
 //ROBOT LINE FOLLOWER --
 
 // L298N Control Pins
-const int MotorKiriMaju = 5;
-const int MotorKiriMundur = 4;
-const int MotorKananMaju = 3;
-const int MotorKananMundur = 2;
+const int MotorKiriMaju = 2;
+const int MotorKiriMundur = 3;
+const int MotorKananMaju = 4;
+const int MotorKananMundur = 5;
 
 // Line Sensor Pins
-  const int lefts = 6; 
-  const int rights = 7; 
+  const int lefts = 7; 
+  const int rights = 6; 
 
 int left_sensor_state;
 int right_sensor_state;
