@@ -43,7 +43,9 @@ void maju()
   digitalWrite(MotorKananMaju,HIGH);
   digitalWrite(MotorKananMundur,LOW);
   digitalWrite(MotorKiriMundur,LOW);
-  delay(SpeedDelay);
+  analogWrite (SpeedKiri, HighSpeed);
+  analogWrite (SpeedKanan, HighSpeed);
+  //delay(SpeedDelay);
 }
 
 void mundur()
@@ -52,6 +54,8 @@ void mundur()
   digitalWrite(MotorKananMundur,HIGH);
   digitalWrite(MotorKiriMaju,LOW);
   digitalWrite(MotorKananMaju,LOW);
+   analogWrite (SpeedKiri, HighSpeed);
+  analogWrite (SpeedKanan, HighSpeed);
 }
 
 void kanan()
@@ -73,6 +77,8 @@ void kiri()
   digitalWrite(MotorKiriMundur,HIGH);
   digitalWrite(MotorKiriMaju,LOW);
   digitalWrite(MotorKananMundur,LOW);
+  analogWrite (SpeedKiri, LowSpeed);
+  analogWrite (SpeedKanan, MidSpeed);
   delay(SpeedDelay);
 }
 
@@ -91,7 +97,7 @@ right_sensor_state = digitalRead(rights);
 
   
 
-  //line detected by both
+  //line detected by none
   if(right_sensor_state == LOW && left_sensor_state == LOW){
    
     maju();
@@ -109,7 +115,7 @@ right_sensor_state = digitalRead(rights);
     kiri();
   }
 
-  //line detected by none
+  //line detected by 
   if(right_sensor_state == HIGH && left_sensor_state == HIGH){
     //stop
     berhenti();

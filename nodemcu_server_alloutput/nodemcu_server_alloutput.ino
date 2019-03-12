@@ -43,8 +43,8 @@ const int output14 = 14;
 const int output12 = 12;
 const int output13 = 13;
 const int output15 = 15;
-const int output3 = 3;
-const int output1 = 1;
+const int output3 = 3; //TX
+const int output1 = 1; //RX
 const int output10 = 10;
 const int output9 = 9;
 
@@ -232,12 +232,12 @@ void loop(){
             // CSS to style the on/off buttons 
             // Feel free to change the background-color and font-size attributes to fit your preferences
             client.println("<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}");
-            client.println(".button { background-color: #195B6A; border: none; color: white; padding: 8px 20px; border-radius: 4px;"); //default  padding: 16px 40px;
-            client.println("text-decoration: none; font-size: 30px; margin: 2px; cursor: pointer;}");
+            client.println(".button { background-color: #195B6A; border: none; color: white; padding: 5px 20px; border-radius: 4px;"); //default, background-color: #195B6A; border: none; color: white; padding: 16px 40px; border-radius: 4px;
+            client.println("text-decoration: none; font-size: 30px; margin: 2px; cursor: pointer;}"); // default, text-decoration: none; font-size: 30px; margin: 2px; cursor: pointer;
             client.println(".button2 {background-color: #77878A;}</style></head>");
             
             // Web Page Heading
-            client.println("<body><h1>SMART HOME</h1>");
+            client.println("<body><h1>SMART HOME DINAR</h1>");
 
             // Display current state, and ON/OFF buttons for GPIO 16  
             client.println("<p>TERAS - State " + output16State + "</p>");
@@ -339,13 +339,13 @@ void loop(){
             }
             client.println("</body></html>");
 
-            // Display current state, and ON/OFF buttons for GPIO 1  
-            client.println("<p>EXTERNAL - State " + output1State + "</p>");
+            // Display current state, and ON/OFF buttons for GPIO 10  
+            client.println("<p>EXTERNAL - State " + output10State + "</p>");
             // If the output1State is off, it displays the ON button       
-            if (output1State=="off") {
-              client.println("<p><a href=\"/1/on\"><button class=\"button\">ON</button></a></p>");
+            if (output10State=="off") {
+              client.println("<p><a href=\"/10/on\"><button class=\"button\">ON</button></a></p>");
             } else {
-              client.println("<p><a href=\"/1/off\"><button class=\"button button2\">OFF</button></a></p>");
+              client.println("<p><a href=\"/10/off\"><button class=\"button button2\">OFF</button></a></p>");
             }
             client.println("</body></html>");
 
