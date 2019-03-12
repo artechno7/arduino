@@ -25,7 +25,7 @@ int ledPin2 = A4;
 // PID Constants
 float Kp = 25; //std 25
 float Ki = 0;  //std 0
-float Kd = 16; //std 15
+float Kd = 17; //std 15
 
 float error = 0, P = 0, I = 0, D = 0, PID_value = 0;
 float previous_error = 0, previous_I = 0;

@@ -74,8 +74,8 @@ void off()
 }
 
 void loop() {
-if( MySerial.available() >0 ) {
-    tombol = MySerial.read();
+if(( MySerial.available() >0 )||(Serial.available()>0)) {
+    tombol = ((MySerial.read()||(Serial.read));
     Serial.println(tombol); 
 }
 

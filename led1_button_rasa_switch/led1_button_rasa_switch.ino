@@ -1,4 +1,4 @@
-int button= 2;
+int button= 8;
 int nilaitombol;
 int count;
 
