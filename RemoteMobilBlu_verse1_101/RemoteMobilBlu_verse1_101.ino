@@ -1,7 +1,7 @@
 //rOBOT REMOTE BLUETOOTH 05
 
-//#include <SoftwareSerial.h> //wajib pake kalau pin bluetooth tidak di 0 dan 1
-//SoftwareSerial BTSerial(11, 12); // RX | TX
+#include <SoftwareSerial.h> //wajib pake kalau pin bluetooth tidak di 0 dan 1
+SoftwareSerial BTSerial(11, 12); // RX | TX
 
 
 //PIN BLUETOOTH RX,TX,0,1
@@ -96,10 +96,10 @@ if( Serial.available() >0 ) {
     val = Serial.read();
     Serial.println(val); 
 }
-//if( BTSerial.available() >0 ) {
- //   val = BTSerial.readString();
-//    Serial.println(val); 
-//}
+if( BTSerial.available() >0 ) {
+val = BTSerial.read();
+Serial.println(val); 
+}
 
   if( val == '1' ) {
     maju(); }

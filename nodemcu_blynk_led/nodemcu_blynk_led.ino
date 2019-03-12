@@ -43,7 +43,7 @@ char auth[] = "1fd32b52bf2747e58044a57eda7f689e";
 
 // Your WiFi credentials.
 // Set password to "" for open networks.
-char ssid[] = "RnD";
+char ssid[] = "Teknisi";
 char pass[] = "bondowoso";
 
 void setup()
@@ -58,4 +58,3 @@ void loop()
 {
   Blynk.run();
 }
-

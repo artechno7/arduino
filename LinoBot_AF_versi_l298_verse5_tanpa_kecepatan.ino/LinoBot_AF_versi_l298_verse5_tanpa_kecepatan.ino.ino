@@ -24,7 +24,7 @@ void setup() {
 
   //begin serial communication
   Serial.begin(9600);
-  delay(3000);
+  delay(3000); //lama jalan waktu arduino nyalan
   
 }
 
