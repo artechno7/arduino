@@ -29,6 +29,7 @@ void setup()
   delay(3000);
   pinMode(PIN_SW,INPUT);
   getgps();
+  getgps();
   proses_looping=false;
 }
 
@@ -36,8 +37,12 @@ void(* ku_reset)(void)=0;
 
 void btrelay() {
   //if (xlat=="" || xlat=="0"){
-    sendData( "AT+CGNSINF",500,true);   
+//   sendData( "AT+CGNSSEQ=RMC",1000,false); 
+//   sendData( "AT+CGNSINF",800,true);   
   //}
+  BTSerial.end();
+  delay(500);
+  getgps();
   BTSerial.begin(9600);
   delay(500);
   if (BTSerial.available()){
@@ -117,6 +122,9 @@ void loop()
 }
 void getgps()
 {
+  sim808.begin(9600);
+  delay(1000);
+   //sendData( "AT+CGNSPWR=0",100,false); 
    sendData( "AT+CGNSPWR=1",100,false); 
    //btrelay();
    sendData( "AT+CGNSSEQ=RMC",1000,false); 
@@ -139,17 +147,18 @@ String sendData(String command, const int timeout, boolean debug)
         response+=c;
       }  
     }    
+    Serial.println("Resp : "+response);
     if(debug)
     {
-      if (debug) Serial.print(response);
       if (getValue(response, ',', 3)!=""){
         xlat = getValue(response, ',', 3);
       }  
       if (getValue(response, ',', 4)!=""){
         ylon = getValue(response, ',', 4);
       }
-      if (debug) Serial.println("Lon:" + ylon);
-      if (debug) Serial.println("Lat:" + xlat);
+      if (DEBUG) Serial.println("Resp : "+response);
+      if (DEBUG) Serial.println("Lon:" + ylon);
+      if (DEBUG) Serial.println("Lat:" + xlat);
       
     }    
     return response;
