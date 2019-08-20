@@ -9,5 +9,7 @@ void loop() {
      {  
     digitalWrite(i,HIGH);delay(10);
     digitalWrite(i,LOW);delay(10);
+    digitalWrite(11-i,HIGH);delay(10);
+    digitalWrite(11-i,LOW);delay(10);
     }
 }

@@ -23,7 +23,7 @@
 
 //initialize and declare variables
 const int ledPin = 13; //led attached to this pin
-const int buttonPin = 2; //push button attached to this pin
+const int buttonPin = 8; //push button attached to this pin
 
 int buttonState = LOW; //this variable tracks the state of the button, low if not pressed, high if pressed
 int ledState = -1; //this variable tracks the state of the LED, negative if off, positive if on
