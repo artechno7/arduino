@@ -1,6 +1,6 @@
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
-LiquidCrystal_I2C lcd(0x20,16,2); //0x20 adalah alamat i2c PCF8574 di proteus 
+LiquidCrystal_I2C lcd(0x27,16,2); //0x20 adalah alamat i2c PCF8574 di proteus 
  
 void setup()
 {
@@ -11,4 +11,3 @@ void setup()
 void loop()
 {
 }
-
