@@ -9,7 +9,7 @@ SoftwareSerial DebugSerial(2, 3); // RX, TX
 
 // You should get Auth Token in the Blynk App.
 // Go to the Project Settings (nut icon).
-char auth[] = "a3cd98f0703b46be89a5c4deaa01dc49";
+char auth[] = "9e523f94fec04444aea643609ce0b6e8";
 
 
 void setup()
@@ -27,4 +27,3 @@ void loop()
 {
   Blynk.run();
 }
-

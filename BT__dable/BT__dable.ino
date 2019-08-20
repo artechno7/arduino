@@ -25,6 +25,8 @@ const int Right = 5;
 
 const int Forward = 6;
 const int Backward = 7;
+const int Left_blink = 8;
+const int Right_blink = 9;
 
 void setup() {
   // put your setup code here, to run once:
@@ -35,6 +37,8 @@ void setup() {
   pinMode(Left, OUTPUT);
   pinMode(Backward, OUTPUT);
   pinMode(Right, OUTPUT);
+  pinMode(Left_blink, OUTPUT);
+  pinMode(Right_blink, OUTPUT);
 }
 
 void loop() {
@@ -176,4 +180,11 @@ void mundur ()
 {
   digitalWrite(Forward,LOW);
     digitalWrite(Backward,HIGH);
+   seinmundur();
 }
+
+void seinmundur ()
+{
+  digitalWrite(Left_blink,HIGH);
+    digitalWrite(Right_blink,HIGH);
+  }
