@@ -1,19 +1,24 @@
+/*
 
+AUTHOR: Hazim Bitar (techbitar)
+DATE: Aug 29, 2013
+LICENSE: Public domain (use at your own risk)
+CONTACT: techbitar at gmail dot com (techbitar.com)
 
-
+*/
 
 
 #include <SoftwareSerial.h>
 
-SoftwareSerial BTSerial(10, 11); // CONNECT BT RX PIN TO ARDUINO 11 PIN | CONNECT BT TX PIN TO ARDUINO 10 PIN
+SoftwareSerial BTSerial(10, 11); // RX | TX
 
-void setup() 
+void setup()
 {
   pinMode(9, OUTPUT);  // this pin will pull the HC-05 pin 34 (key pin) HIGH to switch module to AT mode
-  digitalWrite(9, HIGH); 
+  digitalWrite(9, HIGH);
   Serial.begin(9600);
   Serial.println("Enter AT commands:");
-  BTSerial.begin(38400);  // HC-05 default speed in AT command more
+  BTSerial.begin(9600);  // HC-05 default speed in AT command more
 }
 
 void loop()
@@ -27,5 +32,3 @@ void loop()
   if (Serial.available())
     BTSerial.write(Serial.read());
 }
-
-
