@@ -7,8 +7,8 @@
 #include <ESP8266WiFi.h>
 
 // Replace with your network credentials
-const char* ssid     = "IoT";
-const char* password = "aduhakulupa";
+const char* ssid     = "Teknisi";
+const char* password = "bondowoso";
 
 // Set web server port number to 80
 WiFiServer server(80);
@@ -60,10 +60,10 @@ void setup() {
   pinMode(output12, OUTPUT);
   pinMode(output13, OUTPUT);
   pinMode(output15, OUTPUT);
-  pinMode(output3, OUTPUT);
-  pinMode(output1, OUTPUT);
-  pinMode(output10, OUTPUT);
-  pinMode(output9, OUTPUT);
+ pinMode(output3, OUTPUT);
+  //pinMode(output1, OUTPUT);
+//pinMode(output10, OUTPUT);
+// pinMode(output9, OUTPUT);
   
   // Set outputs to LOW
   digitalWrite(output16, LOW);
@@ -75,10 +75,10 @@ void setup() {
   digitalWrite(output12, LOW);
   digitalWrite(output13, LOW);
   digitalWrite(output15, LOW);
-  digitalWrite(output3, LOW);
-  digitalWrite(output1, LOW);
-  digitalWrite(output10, LOW);
-  digitalWrite(output9, LOW);
+ digitalWrite(output3, LOW);
+ //digitalWrite(output1, LOW);
+  //digitalWrite(output10, LOW);
+  //digitalWrite(output9, LOW);
 
   // Connect to Wi-Fi network with SSID and password
   Serial.print("Connecting to ");
@@ -207,7 +207,8 @@ void loop(){
               Serial.println("GPIO 1 off");
               output1State = "off";
               digitalWrite(output1, LOW);
-            } else if (header.indexOf("GET /10/on") >= 0) {
+            } 
+            else if (header.indexOf("GET /10/on") >= 0) {
               Serial.println("GPIO 10 on");
               output10State = "on";
               digitalWrite(output10, HIGH);
