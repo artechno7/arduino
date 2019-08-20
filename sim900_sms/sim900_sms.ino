@@ -3,7 +3,7 @@ SoftwareSerial SIM900(2, 3); // Pins 7, 8 are used as used as software serial pi
 
 String incomingData;   // for storing incoming serial data
 String message = "";   // A String for storing the message
-int relay_pin = 4;    // Initialized a pin for relay module
+int relay_pin = 13;    // Initialized a pin for relay module
 
 void setup()
 {

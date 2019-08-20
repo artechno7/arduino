@@ -1,5 +1,5 @@
 #include <SoftwareSerial.h>
-SoftwareSerial SIM800L(10, 11); // RX | TX
+SoftwareSerial SIM800L(2, 3); // RX | TX
 // Connect the SIM800L TX to Arduino pin 2 RX. 
 // Connect the SIM800L RX to Arduino pin 3 TX. 
 char c = ' ';
