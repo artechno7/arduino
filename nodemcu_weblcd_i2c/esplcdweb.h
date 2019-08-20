@@ -1,0 +1,40 @@
+#ifndef header_h
+#define header_h
+
+String file1=
+"<!DOCTYPE html>\r\n"
+"<html lang=\"en\">\r\n"
+"    <head>\r\n"
+"        <meta charset=\"utf-8\">\r\n"
+"        <title>ESP8266 Web Page Text to LCD</title>\r\n"
+"        <script>\r\n"
+"\r\n"
+"        strLine1 = \"\";\r\n"
+"        strLine2 = \"\";\r\n"
+"        \r\n"
+"        function SendText()\r\n"
+"        {\r\n"
+"            var request = new XMLHttpRequest();\r\n"
+"            \r\n"
+"            strLine1 = \"&L1=\" + document.getElementById(\"txt_form\").line1LCD.value;\r\n"
+"            strLine2 = \"&L2=\" + document.getElementById(\"txt_form\").line2LCD.value;\r\n"
+"            \r\n"
+"            request.open(\"GET\", \"t\" + strLine1 + strLine2 + \"&/\", true);\r\n"
+"            request.send(null);\r\n"
+"        }\r\n"
+"        </script>\r\n"
+"    </head>\r\n"
+"\r\n"
+"    <body \">\r\n"
+"        <p><b>Enter text to send to LCD:</b></p>\r\n"
+"        <form id=\"txt_form\" name=\"frmText\">\r\n"
+"            <label>Line 1: <input type=\"text\" name=\"line1LCD\" size=\"16\" maxlength=\"16\" /></label><br /><br />\r\n"
+"            <label>Line 2: <input type=\"text\" name=\"line2LCD\" size=\"16\" maxlength=\"16\" /></label>\r\n"
+"        </form>\r\n"
+"        <br />\r\n"
+"        <input type=\"submit\" value=\"Send Text\" onclick=\"SendText()\" />\r\n"
+"    </body>\r\n"
+"\r\n"
+"</html>\r\n";
+
+#endif
