@@ -13,6 +13,10 @@ char datetime[24];
 
 #define PIN_TX    2
 #define PIN_RX    3
+
+#define PIN_KEY 6
+
+
 SoftwareSerial mySerial(PIN_TX,PIN_RX);
 DFRobot_SIM808 sim808(&mySerial);//Connect RX,TX,PWR,
 
@@ -20,7 +24,10 @@ void setup()
 {
   mySerial.begin(9600);
   Serial.begin(9600);
+  
+pinMode(PIN_KEY,OUTPUT);
 
+delay(3000);
   //******** Initialize sim808 module *************
   while(!sim808.init())
   {
@@ -40,10 +47,10 @@ void setup()
 void loop()
 {
   //*********** Detecting unread SMS ************************
-   messageIndex = sim808.isSMSunread();
+   //messageIndex = sim808.isSMSunread();
 
    //*********** At least, there is one UNREAD SMS ***********
-   if (messageIndex > 0)
+   /*if (messageIndex > 0)
    { 
       Serial.print("messageIndex: ");
       Serial.println(messageIndex);
@@ -58,10 +65,11 @@ void loop()
       Serial.println(datetime);        
       Serial.print("Recieved Message: ");
       Serial.println(message); 
-
+*/
     while(!sim808.getGPS())
     {
-      
+      Serial.println("trying ");
+      delay(500);
     }
 
    
@@ -106,5 +114,5 @@ void loop()
       //************* Turn off the GPS power ************
       sim808.detachGPS();
       
-   }
+   //}
 }
