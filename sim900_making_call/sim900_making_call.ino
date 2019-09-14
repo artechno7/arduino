@@ -17,7 +17,7 @@ void setup()
   mySerial.println("AT"); //Handshaking with SIM900
   updateSerial();
   
-  mySerial.println("ATD+ +6285780391803;"); //  change ZZ with country code and xxxxxxxxxxx with phone number to dial
+  mySerial.println("ATD+ +6281258699449;"); //  change ZZ with country code and xxxxxxxxxxx with phone number to dial
   updateSerial();
   delay(20000); // wait for 20 seconds...
   mySerial.println("ATH"); //hang up

@@ -3,12 +3,12 @@ SoftwareSerial SIM900(2, 3); // Pins 7, 8 are used as used as software serial pi
 
 String incomingData;   // for storing incoming serial data
 String message = "";   // A String for storing the message
-int relay_pin = 12;    // Initialized a pin for relay module
+int relay_pin = 13;    // Initialized a pin for relay module
 
 void setup()
 {
-  Serial.begin(9600); // baudrate for serial monitor
-  SIM900.begin(9600); // baudrate for GSM shield
+  Serial.begin(115200); // baudrate for serial monitor
+  SIM900.begin(19200); // baudrate for GSM shield
 
   pinMode(relay_pin, OUTPUT);   // Setting erlay pin as output pin
   digitalWrite(relay_pin, HIGH);  // Making relay pin initailly low
@@ -34,7 +34,6 @@ void loop()
     message = "Led is turned ON";
     // Send a sms back to confirm that the relay is turned on
     send_message(message);
-    
   }
   
   // if received command is to turn off relay
@@ -59,30 +58,14 @@ void receive_message()
 
 void send_message(String message)
 {
-SIM900.println("AT+CMGF=1"); // Configuring TEXT mode
- updateSerial();
-delay(100); 
-SIM900.println("AT+CMGS=\"+6285780391803\"");//change ZZ with country code and xxxxxxxxxxx with phone number to sms
- updateSerial();
-  delay(100); 
-  SIM900.print(message); //text content
- updateSerial();
-  delay(100); 
-SIM900.write(26);//ctrl + z
- delay(100); 
- SIM900.println();
-  delay(1000);
-}
-
-void updateSerial()
-{
-  delay(500);
-  while (Serial.available()) 
-  {
-    SIM900.write(Serial.read());//Forward what Serial received to Software Serial Port
-  }
-  while(SIM900.available()) 
-  {
-    Serial.write(SIM900.read());//Forward what Software Serial received to Serial Port
-  }
+  SIM900.println("AT+CMGF=1");    //Set the GSM Module in Text Mode
+  delay(100);  
+  SIM900.println("AT+CMGS=\"+6281258699449\""); // Replace it with your mobile number
+  delay(100);
+  SIM900.println(message);   // The SMS text you want to send
+  delay(100);
+  SIM900.println((char)26);  // ASCII code of CTRL+Z
+  delay(100);
+  SIM900.println();
+  delay(1000);  
 }

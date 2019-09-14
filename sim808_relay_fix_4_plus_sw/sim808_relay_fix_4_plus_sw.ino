@@ -3,10 +3,16 @@
 #define PIN_TX    2
 #define PIN_RX    3
 
-#define R1      9
-#define R2      10
-#define R3      11
-#define R4      12
+#define PIN_SW 4
+#define STA 5
+
+#define R1      6
+#define R2      7
+#define R3      8
+#define R4      9
+
+
+int val_STA;
 
 SoftwareSerial mySerial(PIN_TX,PIN_RX);
 DFRobot_SIM808 sim808(&mySerial);//Connect RX,TX,PWR,
@@ -19,6 +25,17 @@ void setup() {
   // put your setup code here, to run once:
   mySerial.begin(9600);
   Serial.begin(9600);
+
+  //nyalakan modul dgn GND
+  pinMode(PIN_SW,OUTPUT);
+  delay(3000);
+  pinMode(PIN_SW,INPUT);
+
+
+
+//detect STA
+pinMode(STA,INPUT);
+  
 pinMode(R1, OUTPUT);
 pinMode(R2, OUTPUT);
 pinMode(R3, OUTPUT);
@@ -28,6 +45,16 @@ digitalWrite(R1, 1);
 digitalWrite(R2, 1);
 digitalWrite(R3, 1);
 digitalWrite(R4, 1);
+
+//menjaga agar switch selalu ON
+val_STA = digitalRead(STA);
+delay(2000);
+if(val_STA == 0){
+//nyalakan modul dgn GND
+  pinMode(PIN_SW,OUTPUT);
+  delay(3000);
+  pinMode(PIN_SW,INPUT);
+}
 
   //******** Initialize sim808 module *************
   while(!sim808.init()) {
@@ -45,6 +72,17 @@ digitalWrite(R4, 1);
 void loop() {
   // put your main code here, to run repeatedly:
 messageIndex = sim808.isSMSunread();
+
+val_STA = digitalRead(STA);
+
+if(val_STA == 0){
+//nyalakan modul dgn GND
+  pinMode(PIN_SW,OUTPUT);
+  delay(3000);
+  pinMode(PIN_SW,INPUT);
+}
+
+
 if (messageIndex > 0) {
       sim808.readSMS(messageIndex, message, MESSAGE_LENGTH, phone, datetime);
     
@@ -96,6 +134,22 @@ if (messageIndex > 0) {
         sim808.sendSMS(phone,"Relay 4 OFF");
         digitalWrite(R4, 1);
         Serial.println("R4 mati");      
+      }
+      else if ((pesan == "RALL ON")&&(no == "+6281258699449")){
+        sim808.sendSMS(phone,"Relay all ON");
+        digitalWrite(R1, 0);
+        digitalWrite(R2, 0);
+        digitalWrite(R3, 0);
+        digitalWrite(R4, 0);
+        Serial.println("R All nyala");      
+      }
+      else if ((pesan == "RALL OFF")&&(no == "+6281258699449")){
+        sim808.sendSMS(phone,"Relay all OFF");
+        digitalWrite(R1, 1);
+        digitalWrite(R2, 1);
+        digitalWrite(R3, 1);
+        digitalWrite(R4, 1);
+        Serial.println("R All mati");      
       }
    
    }

@@ -27,7 +27,7 @@ void setup(){
   pinMode(LeftMotorBackward, OUTPUT);
   pinMode(RightMotorBackward, OUTPUT);
   
-  servo_motor.attach(10); //our servo pin
+  servo_motor.attach(8); //our servo pin
 
   servo_motor.write(115);
   delay(2000);
