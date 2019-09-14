@@ -2,19 +2,18 @@
 #include <SoftwareSerial.h>
 #define PIN_TX    2
 #define PIN_RX    3
-char nomorhp="+6281258699449"; //+6285780391803
 
-//#define PIN_TX_BT 4
-//#define PIN_RX_BT 5
+#define PIN_TX_BT 4
+#define PIN_RX_BT 5
 
-//#define PIN_KEY 4
+#define PIN_KEY 6
 
-//#define PIN_VIBRA 7
+#define PIN_VIBRA 7
 
-#define R1      6
-#define R2      7
-#define R3      8
-#define R4      9
+#define R1      9
+#define R2      10
+#define R3      11
+#define R4      12
 
 SoftwareSerial mySerial(PIN_TX,PIN_RX);
 //SoftwareSerial btSerial(PIN_TX_BT,PIN_RX_BT);
@@ -43,10 +42,10 @@ digitalWrite(R4, 1);
 
 //pin key diberi GND 3 detik untuk nyala
 //pinMode(PIN_KEY,OUTPUT);
-//delay(2000);
+//delay(3000);
 //pinMode(PIN_KEY,INPUT);
 
-//pinMode(PIN_VIBRA,INPUT);
+pinMode(PIN_VIBRA,INPUT);
  
 
   //******** Initialize sim808 module *************
@@ -77,42 +76,42 @@ if (messageIndex > 0) {
       Serial.println(message);
       String no = phone;
       String pesan = message;
-      if ((pesan == "R1 ON")&&(no == nomorhp)){
+      if ((pesan == "R1 ON")&&(no == "+6281258699449")){
         sim808.sendSMS(phone,"Siap bos relay 1 sudah nyala, santai nomer lain gak bisa ngontrol");
         digitalWrite(R1, 0);
         Serial.println("RELAY 1 nyala");
       }
-      else if ((pesan == "R1 OFF")&&(no == nomorhp)){
+      else if ((pesan == "R1 OFF")&&(no == "+6281258699449")){
         sim808.sendSMS(phone,"Siap bos relay 1 sudah mati, santai nomer lain gak bisa ngontrol");
         digitalWrite(R1, 1);
         Serial.println("RELAY 1 mati");      
       }
-      else if ((pesan == "R2 ON")&&(no == nomorhp)){
+      else if ((pesan == "R2 ON")&&(no == "+6281258699449")){
         sim808.sendSMS(phone,"Siap bos relay 2 sudah nyala, santai nomer lain gak bisa ngontrol");
         digitalWrite(R2, 0);
         Serial.println("RELAY 2 nyala");
       }
-      else if ((pesan == "R2 OFF")&&(no == nomorhp)){
+      else if ((pesan == "R2 OFF")&&(no == "+6281258699449")){
         sim808.sendSMS(phone,"Siap bos relay 2 sudah mati, santai nomer lain gak bisa ngontrol");
         digitalWrite(R2, 1);
         Serial.println("RELAY 2 mati");      
       }
-      else if ((pesan == "R3 ON")&&(no == nomorhp)){
+      else if ((pesan == "R3 ON")&&(no == "+6281258699449")){
         sim808.sendSMS(phone,"Siap bos relay 3 sudah nyala, santai nomer lain gak bisa ngontrol");
         digitalWrite(R3, 0);
         Serial.println("RELAY 3 nyala");
       }
-      else if ((pesan == "R3 OFF")&&(no == nomorhp)){
+      else if ((pesan == "R3 OFF")&&(no == "+6281258699449")){
         sim808.sendSMS(phone,"Siap bos relay 3 sudah mati, santai nomer lain gak bisa ngontrol");
         digitalWrite(R3, 1);
         Serial.println("RELAY 3 mati");      
       }
-      else if ((pesan == "R4 ON")&&(no == nomorhp)){
+      else if ((pesan == "R4 ON")&&(no == "+6281258699449")){
         sim808.sendSMS(phone,"Siap bos relay 4 sudah nyala, santai nomer lain gak bisa ngontrol");
         digitalWrite(R4, 0);
         Serial.println("RELAY 4 nyala");
       }
-      else if ((pesan == "R4 OFF")&&(no == nomorhp)){
+      else if ((pesan == "R4 OFF")&&(no == "+6281258699449")){
         sim808.sendSMS(phone,"Siap bos relay 4 sudah mati, santai nomer lain gak bisa ngontrol");
         digitalWrite(R4, 1);
         Serial.println("RELAY 4 mati");      
